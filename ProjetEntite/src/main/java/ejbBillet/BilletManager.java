@@ -1,6 +1,5 @@
 package ejbBillet;
 
-
 import ejbAgenda.Contact;
 
 import javax.ejb.LocalBean;
@@ -20,9 +19,6 @@ public class BilletManager implements BilletManagerRemote {
         em.persist(billet);
         return billet;
     }
-    public Collection<Billet> listerBillet() {
-        // Vous pouvez aussi utiliser une named query définie dans l’entité
-        return em.createQuery("SELECT c FROM Billet c").getResultList();
-    }
+    public Collection<Billet> listerBillet() {return em.createQuery("SELECT c FROM Billet c").getResultList();}
 
 }

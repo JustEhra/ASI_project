@@ -7,7 +7,7 @@
 
   <servlet>
     <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>web.laserviette</servlet-class>
+    <servlet-class>web.IndexServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

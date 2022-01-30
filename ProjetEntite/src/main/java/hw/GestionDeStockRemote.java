@@ -1,4 +1,3 @@
-
 package hw;
 
 import javax.ejb.Remote;

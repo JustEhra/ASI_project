@@ -2,6 +2,7 @@ package web;
 
 import ejbAgenda.ContactManagerRemote;
 import ejbBillet.BilletManagerRemote;
+import ejbUser.UserManagerRemote;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -35,6 +36,8 @@ public class EjbLocator {
     }
 
     public BilletManagerRemote getBilletManager() { return getEjb(BilletManagerRemote.class, "BilletManager"); }
+
+    public UserManagerRemote getUserManager() { return getEjb(UserManagerRemote.class, "UserManager"); }
 }
 
 

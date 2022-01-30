@@ -1,23 +1,25 @@
-<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ page import="javax.swing.text.html.HTML" %>
 <html>
 <head></head>
 <body>
 Gestionnaire de contacts
 <ul>
     <c:choose>
-        <c:when test="${session.getAttribute('username') != null}">
-            Connected as ""
+        <c:when test="${!empty sessionScope.mail}">
+            Connected as <a href="UserInterface"/><%=session.getAttribute("username")%> Click to see id</a></br>
+            <a href="."/><%session.invalidate();%> Click here to disconnect</a>
         </c:when>
         <c:otherwise>
-            <a href="UserInterface"/>Connection</a><br />
+            <a href="LoginUserFormServlet"/>Connection<br/>
+            <a href="AddUserFormServlet"/>Inscription<br/>
         </c:otherwise>
     </c:choose>
 
-    <li/><a href="AddContactFormServlet"/>ajout d'un contact</a><br/>
-    <li/><a href="AddBilletFormServlet"/>ajout d'un billet</a><br/>
-    <li/><a href="ListContactServlet"/>lister les contacts</a><br/>
+    <li/><a href="AddContactFormServlet"/>ajout d'un contact<br/>
+    <li/><a href="AddBilletFormServlet"/>ajout d'un billet<br/>
+    <li/><a href="ListContactServlet"/>lister les contacts<br/>
 </ul>
 </body>
 </html>
