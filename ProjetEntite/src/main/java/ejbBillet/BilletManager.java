@@ -19,6 +19,8 @@ public class BilletManager implements BilletManagerRemote {
         em.persist(billet);
         return billet;
     }
-    public Collection<Billet> listerBillet() {return em.createQuery("SELECT c FROM Billet c").getResultList();}
+    public Collection<Billet> chercheBillet(String _depart, String _arivee, String _date) {
+        return em.createQuery("SELECT b FROM Billet b WHERE b.depart LIKE '%" + _depart + "%' AND b.arivee LIKE '%" + _arivee + "%' AND b.date LIKE '%" + _date + "%' ORDER BY b.prix").getResultList();
+    }
 
 }

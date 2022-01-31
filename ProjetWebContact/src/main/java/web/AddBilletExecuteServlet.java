@@ -19,7 +19,7 @@ public class AddBilletExecuteServlet extends HttpServlet {
         billet.setDepart(request.getParameter("billet.depart"));
         billet.setArivee(request.getParameter("billet.arivee"));
         billet.setType(request.getParameter("billet.type"));
-        billet.setDate(Integer.parseInt(request.getParameter("billet.date")));
+        billet.setDate(request.getParameter("billet.date"));
         billet.setPrix(Integer.parseInt(request.getParameter("billet.prix")));
         billet.setQuantiteEnStock(Integer.parseInt(request.getParameter("billet.quantiteEnStock")));
         BilletManagerRemote billetManagerRemote = EjbLocator.getLocator().getBilletManager();
@@ -40,4 +40,3 @@ public class AddBilletExecuteServlet extends HttpServlet {
         rd.forward(request, response);
     }
 }
-

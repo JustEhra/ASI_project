@@ -15,7 +15,7 @@ public class Billet implements Serializable {
     private String type;
     private String  depart;
     private String arivee;
-    private int date;
+    private String date;
     private int prix;
     private int quantiteEnStock;
 
@@ -43,7 +43,7 @@ public class Billet implements Serializable {
         return arivee;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -67,7 +67,7 @@ public class Billet implements Serializable {
         this.arivee = arivee;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

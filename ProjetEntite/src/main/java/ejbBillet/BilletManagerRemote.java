@@ -5,8 +5,9 @@ import java.util.Collection;
 
 @Remote
 public interface BilletManagerRemote {
-    Billet ajouterBillet(Billet billet);
 
-    Collection<Billet> listerBillet();
+    public Billet ajouterBillet(Billet billet);
+
+    public Collection<Billet> chercheBillet(String _depart, String _arivee, String _date);
 
 }

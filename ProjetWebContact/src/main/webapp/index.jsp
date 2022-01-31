@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -20,6 +21,7 @@ Gestionnaire de contacts
     <li/><a href="AddContactFormServlet"/>ajout d'un contact<br/>
     <li/><a href="AddBilletFormServlet"/>ajout d'un billet<br/>
     <li/><a href="ListContactServlet"/>lister les contacts<br/>
+    <li/><a href="ChercheBilletFormServlet"/>Chercher des billets<br/>
 </ul>
 </body>
 </html>
