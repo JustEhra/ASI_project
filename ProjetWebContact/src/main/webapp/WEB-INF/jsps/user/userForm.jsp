@@ -13,8 +13,8 @@ Crée un Compte : <br/>
     <input type="text" name="user.mail"/><br/></label>
     <label>Password :
     <input type="text" name="user.password"/><br/></label>
-
-    <input type="submit"/>
+    <input type="submit"/><br/>
+    <%= request.getAttribute("error")!=null?request.getAttribute("error"):"" %>
 </form>
 </body>
 </html>

@@ -14,4 +14,5 @@ public interface UserManagerRemote {
     public Collection<User> listerUser();
 
     public User getUserByMailAndPassword(String Mail,String Password);
+    public User getUserByMail(String Mail);
 }
