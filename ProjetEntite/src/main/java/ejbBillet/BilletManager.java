@@ -20,7 +20,15 @@ public class BilletManager implements BilletManagerRemote {
         return billet;
     }
     public Collection<Billet> chercheBillet(String _depart, String _arivee, String _date) {
-        return em.createQuery("SELECT b FROM Billet b WHERE b.depart LIKE '%" + _depart + "%' AND b.arivee LIKE '%" + _arivee + "%' AND b.date LIKE '%" + _date + "%' ORDER BY b.prix").getResultList();
+        return em.createQuery("SELECT b FROM Billet b WHERE b.depart LIKE '%" + _depart + "%' AND b.arivee LIKE '%" + _arivee + "%' AND b.date LIKE '%" + _date + "%' AND b.quantiteEnStock > 0 ORDER BY b.prix").getResultList();
+    }
+
+    public void buyBillet(Billet billet) {
+        em.merge(billet);
+    }
+
+    public Billet findBilletById(int id) {
+        return em.find(Billet.class, id);
     }
 
 }

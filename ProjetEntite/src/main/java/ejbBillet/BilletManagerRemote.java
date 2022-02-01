@@ -10,4 +10,9 @@ public interface BilletManagerRemote {
 
     public Collection<Billet> chercheBillet(String _depart, String _arivee, String _date);
 
-}
+    public void buyBillet(Billet billet);
+
+    public Billet findBilletById(int id);
+
+
+    }

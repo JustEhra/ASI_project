@@ -38,6 +38,11 @@ Liste des billets : <br/>
         <td><%= billet.getType() %></td>
         <td><%= billet.getPrix() %></td>
         <td><%= billet.getQuantiteEnStock() %></td>
+        <td><form method="get" action="BuyExecuteServlet">
+            <input type="hidden" value="<%= billet.getId() %>" name="billet.id"/>
+            <input type="submit" value="ACHETER"/>
+        </form>
+        </td>
     </tr>
     <%
         }
