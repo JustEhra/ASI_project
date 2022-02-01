@@ -13,7 +13,6 @@ Acheter des billets
             <c:if test="${sessionScope.administrator}">
                 <a href="AddBilletFormServlet"/>Créer des billets<br/>
             </c:if>
-            <a href="."/><%session.invalidate();%> Click here to disconnect</a><br/>
         </c:when>
         <c:otherwise>
             <a href="LoginUserFormServlet"/>Connection<br/>
@@ -21,6 +20,10 @@ Acheter des billets
         </c:otherwise>
     </c:choose>
     <a href="ChercheBilletFormServlet"/>Chercher des billets<br/>
+
+    <c:if test="${!empty sessionScope.mail}">
+        <a href="."/><%session.invalidate();%> Click here to disconnect</a><br/>
+    </c:if>
 </ul>
 </body>
 </html>

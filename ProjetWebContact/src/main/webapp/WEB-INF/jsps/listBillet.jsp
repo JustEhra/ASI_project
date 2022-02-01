@@ -2,6 +2,10 @@
 <%@ page import="ejbBillet.Billet" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Collection" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -38,11 +42,14 @@ Liste des billets : <br/>
         <td><%= billet.getType() %></td>
         <td><%= billet.getPrix() %></td>
         <td><%= billet.getQuantiteEnStock() %></td>
-        <td><form method="get" action="BuyExecuteServlet">
-            <input type="hidden" value="<%= billet.getId() %>" name="billet.id"/>
-            <input type="submit" value="ACHETER"/>
-        </form>
-        </td>
+
+        <c:if test="${!empty sessionScope.mail}">
+            <td><form method="get" action="BuyExecuteServlet">
+                <input type="hidden" value="<%= billet.getId() %>" name="billet.id"/>
+                <input type="submit" value="ACHETER"/>
+            </form>
+            </td>
+        </c:if>
     </tr>
     <%
         }
