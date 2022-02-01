@@ -37,6 +37,7 @@ public class AddUserExecuteServlet extends HttpServlet {
                 .toString();
 
         user.setPassword(sha256hex);
+        user.setAdministrator(false);
 
 
         User newUser = userManagerRemote.ajouterUser(user);
@@ -48,6 +49,7 @@ public class AddUserExecuteServlet extends HttpServlet {
             //set mail and username in session for later use
             session.setAttribute("mail",user.getMail());
             session.setAttribute("username",user.getNom());
+            session.setAttribute("administrator",user.isAdministrator());
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         else {

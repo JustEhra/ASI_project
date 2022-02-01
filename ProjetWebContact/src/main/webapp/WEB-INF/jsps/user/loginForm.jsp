@@ -9,7 +9,7 @@
 </head>
 <body>
 Connection : <br/>
-<form method="get" action="LoginExecuteServlet">
+<form method="post" action="LoginExecuteServlet">
     Mail :
     <input type="text" name="user.mail"/><br/>
     Password :

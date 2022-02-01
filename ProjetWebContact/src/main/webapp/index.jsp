@@ -5,23 +5,22 @@
 <html>
 <head></head>
 <body>
-Gestionnaire de contacts
+Acheter des billets
 <ul>
     <c:choose>
         <c:when test="${!empty sessionScope.mail}">
             Connected as <a href="UserInterface"/><%=session.getAttribute("username")%> Click to see id</a></br>
-            <a href="."/><%session.invalidate();%> Click here to disconnect</a>
+            <c:if test="${sessionScope.administrator}">
+                <a href="AddBilletFormServlet"/>Créer des billets<br/>
+            </c:if>
+            <a href="."/><%session.invalidate();%> Click here to disconnect</a><br/>
         </c:when>
         <c:otherwise>
             <a href="LoginUserFormServlet"/>Connection<br/>
             <a href="AddUserFormServlet"/>Inscription<br/>
         </c:otherwise>
     </c:choose>
-
-    <li/><a href="AddContactFormServlet"/>ajout d'un contact<br/>
-    <li/><a href="AddBilletFormServlet"/>ajout d'un billet<br/>
-    <li/><a href="ListContactServlet"/>lister les contacts<br/>
-    <li/><a href="ChercheBilletFormServlet"/>Chercher des billets<br/>
+    <a href="ChercheBilletFormServlet"/>Chercher des billets<br/>
 </ul>
 </body>
 </html>

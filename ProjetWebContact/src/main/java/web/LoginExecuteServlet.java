@@ -16,7 +16,7 @@ import java.io.IOException;
 public class LoginExecuteServlet extends HttpServlet {
     private ServletResponse response;
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServletException, IOException {
         UserManagerRemote userManagerRemote = EjbLocator.getLocator().getUserManager();
         User loggedUser = null;
         loggedUser = userManagerRemote.getUserByMailAndPassword(request.getParameter("user.mail"),request.getParameter("user.password"));
@@ -24,6 +24,7 @@ public class LoginExecuteServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("mail", loggedUser.getMail());
             session.setAttribute("username", loggedUser.getNom());
+            session.setAttribute("administrator",loggedUser.isAdministrator());
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         request.setAttribute("error", "Il semble qu'il y ai eu un problème !");
