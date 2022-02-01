@@ -2,13 +2,16 @@ package ejbUser;
 
 import com.google.common.hash.Hashing;
 import ejbAgenda.Contact;
+import ejbBillet.Billet;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 @Stateless
@@ -37,6 +40,10 @@ public class UserManager implements UserManagerRemote {
         List<User> user = em.createQuery("SELECT u FROM User u WHERE u.mail = '" + Mail + "' AND u.password ='" + sha256hex + "'").getResultList();
         if(user.isEmpty()) return null;
         return user.get(0);
+    }
+
+    public User findUserById(int id) {
+       return em.find(User.class,id);
     }
 
 

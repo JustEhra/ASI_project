@@ -1,5 +1,6 @@
 package ejbUser;
 
+import ejbBillet.Billet;
 import hw.Produit;
 
 import javax.ejb.Remote;
@@ -15,4 +16,5 @@ public interface UserManagerRemote {
 
     public User getUserByMailAndPassword(String Mail,String Password);
     public User getUserByMail(String Mail);
+    public User findUserById(int id);
 }

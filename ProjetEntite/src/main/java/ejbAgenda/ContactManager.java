@@ -15,9 +15,11 @@ public class ContactManager implements ContactManagerRemote {
     EntityManager em;
 
     public Contact ajouterContact(Contact contact) {
-        em.persist(contact);
-        return contact;
+
+            em.persist(contact);
+            return contact;
     }
+
     public Collection<Contact> listerContact() {
         // Vous pouvez aussi utiliser une named query définie dans l’entité
         return em.createQuery("SELECT c FROM Contact c").getResultList();

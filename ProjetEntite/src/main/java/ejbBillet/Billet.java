@@ -1,13 +1,14 @@
 package ejbBillet;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
+import ejbUser.User;
 
-@Entity
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+
+@Entity(name = "Billet")
+@Table(name = "billet")
 public class Billet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,18 +18,21 @@ public class Billet implements Serializable {
     private String arivee;
     private String date;
     private int prix;
-    private int quantiteEnStock;
 
-    public void setQuantiteEnStock(int quantiteEnStock) {
-        this.quantiteEnStock = quantiteEnStock;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn
+    private User user;
+
+    public Billet() {}
+
+    public User getUser() {return user;}
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId() {
         return id;
-    }
-
-    public int getQuantiteEnStock() {
-        return quantiteEnStock;
     }
 
     public String getType() {

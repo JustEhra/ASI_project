@@ -21,7 +21,6 @@ public class AddBilletExecuteServlet extends HttpServlet {
         billet.setType(request.getParameter("billet.type"));
         billet.setDate(request.getParameter("billet.date"));
         billet.setPrix(Integer.parseInt(request.getParameter("billet.prix")));
-        billet.setQuantiteEnStock(Integer.parseInt(request.getParameter("billet.quantiteEnStock")));
         BilletManagerRemote billetManagerRemote = EjbLocator.getLocator().getBilletManager();
         System.out.println(billetManagerRemote);
 

@@ -1,13 +1,16 @@
 package ejbUser;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
+import ejbBillet.Billet;
 
-@Entity
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+@Entity(name = "User")
+@Table(name = "user")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +20,20 @@ public class User implements Serializable {
     private String password;
     private boolean administrator;
 
-    public int getId() {
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<Billet> billets = new ArrayList<>();
+
+    public User(){}
+
+    public List<Billet> getBillets() {
+        return billets;
+    }
+
+    public void setBillets(List<Billet> billets) {
+        this.billets = billets;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -52,6 +68,8 @@ public class User implements Serializable {
     public boolean isAdministrator() { return administrator; }
 
     public void setAdministrator(boolean administrator) { this.administrator = administrator; }
+
+
 
 }
 

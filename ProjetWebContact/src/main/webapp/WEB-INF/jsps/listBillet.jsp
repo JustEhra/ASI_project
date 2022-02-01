@@ -2,6 +2,7 @@
 <%@ page import="ejbBillet.Billet" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -15,7 +16,6 @@
 <body>
 Liste des billets : <br/>
 <br/>
-
 <table width="90%" >
 
     <tr>
@@ -24,7 +24,7 @@ Liste des billets : <br/>
         <td>Date</td>
         <td>Type</td>
         <td>Prix (€)</td>
-        <td>Places disponibles</td>
+        <!--<td>Places disponibles</td>-->
     </tr>
     <br/>
 
@@ -33,15 +33,19 @@ Liste des billets : <br/>
         Iterator it = ((Collection)request.getAttribute("chercheBillet")).iterator();
         while(it.hasNext()) {
             Billet billet = (Billet)it.next();
-    %>
+            if(billet.getUser() == null)
+            {
 
+    %>
+    <td> </td>
     <tr>
+
         <td><%= billet.getDepart() %></td>
         <td><%= billet.getArivee() %></td>
         <td><%= billet.getDate() %></td>
         <td><%= billet.getType() %></td>
-        <td><%= billet.getPrix() %></td>
-        <td><%= billet.getQuantiteEnStock() %></td>
+        <td><%= billet.getUser() %></td>
+        <!--todo <td> quantite</td> -->
 
         <c:if test="${!empty sessionScope.mail}">
             <td><form method="get" action="BuyExecuteServlet">
@@ -52,6 +56,7 @@ Liste des billets : <br/>
         </c:if>
     </tr>
     <%
+            }
         }
     %>
 </table>

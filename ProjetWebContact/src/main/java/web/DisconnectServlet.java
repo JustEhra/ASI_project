@@ -9,13 +9,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet("/IndexServlet")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/DisconnectServlet")
+public class DisconnectServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        session.invalidate();
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
 
 
     }

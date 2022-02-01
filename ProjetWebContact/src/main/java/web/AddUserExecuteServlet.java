@@ -2,6 +2,7 @@ package web;
 
 
 import com.google.common.hash.Hashing;
+import ejbBillet.Billet;
 import ejbUser.User;
 import ejbUser.UserManagerRemote;
 
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @WebServlet("/AddUserExecuteServlet")
 public class AddUserExecuteServlet extends HttpServlet {
@@ -26,6 +30,7 @@ public class AddUserExecuteServlet extends HttpServlet {
         if(null != userManagerRemote.getUserByMail(request.getParameter("user.mail"))) {
             request.setAttribute("error", "Cette Email est déjà utilisé !");
             request.getRequestDispatcher("/WEB-INF/jsps/user/userForm.jsp").forward(request, response);
+            return;
         }
 
         user.setNom(request.getParameter("user.nom"));
@@ -38,7 +43,7 @@ public class AddUserExecuteServlet extends HttpServlet {
 
         user.setPassword(sha256hex);
         user.setAdministrator(false);
-
+        user.setBillets(null);
 
         User newUser = userManagerRemote.ajouterUser(user);
         RequestDispatcher rd = null;
@@ -47,6 +52,7 @@ public class AddUserExecuteServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             //set mail and username in session for later use
+            session.setAttribute("id",user.getId());
             session.setAttribute("mail",user.getMail());
             session.setAttribute("username",user.getNom());
             session.setAttribute("administrator",user.isAdministrator());

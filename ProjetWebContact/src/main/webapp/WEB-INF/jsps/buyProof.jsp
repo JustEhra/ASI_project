@@ -14,7 +14,6 @@ Vous avez acheté le billet suivant </br>
         <td>Date</td>
         <td>Type</td>
         <td>Prix (€)</td>
-        <td>Places disponibles</td>
     </tr>
     <tr>
         <td><%= billet.getDepart() %></td>
@@ -22,7 +21,6 @@ Vous avez acheté le billet suivant </br>
         <td><%= billet.getDate() %></td>
         <td><%= billet.getType() %></td>
         <td><%= billet.getPrix() %></td>
-        <td>Il en reste : <%= billet.getQuantiteEnStock() %></td>
     </tr>
 </table>
 </body>

@@ -14,14 +14,15 @@ import java.io.IOException;
 
 @WebServlet("/LoginExecuteServlet")
 public class LoginExecuteServlet extends HttpServlet {
-    private ServletResponse response;
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserManagerRemote userManagerRemote = EjbLocator.getLocator().getUserManager();
         User loggedUser = null;
         loggedUser = userManagerRemote.getUserByMailAndPassword(request.getParameter("user.mail"),request.getParameter("user.password"));
         if(loggedUser != null) {
             HttpSession session = request.getSession();
+            session.setAttribute("id",loggedUser.getId());
             session.setAttribute("mail", loggedUser.getMail());
             session.setAttribute("username", loggedUser.getNom());
             session.setAttribute("administrator",loggedUser.isAdministrator());
@@ -30,6 +31,7 @@ public class LoginExecuteServlet extends HttpServlet {
         request.setAttribute("error", "Il semble qu'il y ai eu un problème !");
         request.getRequestDispatcher("/WEB-INF/jsps/user/loginForm.jsp").forward(request, response);
     }
- }
+
+}
 
 
