@@ -1,6 +1,6 @@
 package ejbBillet;
 
-import ejbAgenda.Contact;
+import ejbUser.User;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -22,11 +22,19 @@ public class BilletManager implements BilletManagerRemote {
     public Collection<Billet> chercheBillet(String _depart, String _arivee, String _date) {
         return em.createQuery("SELECT b FROM Billet b WHERE b.depart LIKE '%" + _depart + "%' AND b.arivee LIKE '%" + _arivee + "%' AND b.date LIKE '%" + _date + "%' ORDER BY b.prix").getResultList();
     }
+
+    public Collection<Billet> chercheBilletbyUser(User user) {
+        return em.createQuery("SELECT b FROM Billet b WHERE b.user.id = '" + user.getId() + "'" ).getResultList();
+    }
+
     public Billet findBilletById(int id) {
         return em.find(Billet.class, id);
     }
 
-    public void buyBillet(Billet billet) {
+    public void buyBillet(Billet billet, User user) {
+
         em.merge(billet);
+        em.merge(user);
+
     }
 }

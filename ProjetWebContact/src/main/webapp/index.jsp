@@ -5,7 +5,7 @@
 <html>
 <head></head>
 <body>
-Acheter des billets
+<h2>Acheter des billets</h2>
 <ul>
     <c:choose>
         <c:when test="${!empty sessionScope.mail}">
@@ -19,8 +19,9 @@ Acheter des billets
             <a href="AddUserFormServlet">Inscription</a><br/>
         </c:otherwise>
     </c:choose>
+    <br/>
     <a href="ChercheBilletFormServlet">Chercher des billets<br/>
-
+        <br/>
     <c:if test="${!empty sessionScope.mail}">
         <a href="DisconnectServlet"> Click here to disconnect</a><br/>
     </c:if>

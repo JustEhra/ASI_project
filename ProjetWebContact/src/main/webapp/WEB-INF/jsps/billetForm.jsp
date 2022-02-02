@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <meta charset="UTF-8">
 <head>
@@ -6,6 +9,7 @@
     </title>
 </head>
 <body>
+<c:if test="${sessionScope.administrator}">
 <u> Cree un billet : </u><br/><br/>
 <form method="post" action="AddBilletExecuteServlet">
 
@@ -40,11 +44,10 @@
     <input type="date" name="billet.date"/>
     Prix :
     <input type="text" name="billet.prix"/><br/>
-    Stock :
-    <input type="text" name="billet.quantiteEnStock"/><br/>
     <br/>
     <input type="submit"/>
 </form>
+</c:if>
 </body>
 </html>
 

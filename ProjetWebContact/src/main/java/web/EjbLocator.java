@@ -1,6 +1,5 @@
 package web;
 
-import ejbAgenda.ContactManagerRemote;
 import ejbBillet.BilletManagerRemote;
 import ejbUser.UserManagerRemote;
 
@@ -30,9 +29,6 @@ public class EjbLocator {
         } catch (NamingException e) {
             return null;
         }
-    }
-    public ContactManagerRemote getContactManager() {
-        return getEjb(ContactManagerRemote.class, "ContactManager");
     }
 
     public BilletManagerRemote getBilletManager() { return getEjb(BilletManagerRemote.class, "BilletManager"); }

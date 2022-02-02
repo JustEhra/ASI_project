@@ -1,7 +1,6 @@
 package ejbUser;
 
 import com.google.common.hash.Hashing;
-import ejbAgenda.Contact;
 import ejbBillet.Billet;
 
 import javax.ejb.LocalBean;
@@ -40,6 +39,12 @@ public class UserManager implements UserManagerRemote {
         List<User> user = em.createQuery("SELECT u FROM User u WHERE u.mail = '" + Mail + "' AND u.password ='" + sha256hex + "'").getResultList();
         if(user.isEmpty()) return null;
         return user.get(0);
+    }
+
+    public void addNewBillet(User user, Billet billet) {
+        List<Billet> listBillet = user.getBillets();
+        listBillet.add(billet);
+        em.merge(user);
     }
 
     public User findUserById(int id) {

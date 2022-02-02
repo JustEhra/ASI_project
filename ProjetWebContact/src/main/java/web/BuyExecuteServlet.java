@@ -30,7 +30,8 @@ public class BuyExecuteServlet extends HttpServlet {
         Billet billet = billetManagerRemote.findBilletById(ID);
         User user = userManagerRemote.findUserById(uID);
         billet.setUser(user);
-        billetManagerRemote.buyBillet(billet);
+        userManagerRemote.addNewBillet(user, billet);
+        billetManagerRemote.buyBillet(billet, user);
         request.setAttribute("billet", billet);
         request.getRequestDispatcher("/WEB-INF/jsps/buyProof.jsp").forward(request, response);
     }

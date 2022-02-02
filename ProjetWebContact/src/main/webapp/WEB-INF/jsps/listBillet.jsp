@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -44,7 +45,7 @@ Liste des billets : <br/>
         <td><%= billet.getArivee() %></td>
         <td><%= billet.getDate() %></td>
         <td><%= billet.getType() %></td>
-        <td><%= billet.getUser() %></td>
+        <td><%= billet.getPrix() %></td>
         <!--todo <td> quantite</td> -->
 
         <c:if test="${!empty sessionScope.mail}">

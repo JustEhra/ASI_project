@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "User")
-@Table(name = "user")
+//@Table(name = "user")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

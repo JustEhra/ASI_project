@@ -6,7 +6,7 @@
     </title>
 </head>
 <body>
-<u> Cree un billet : </u><br/><br/>
+<u> Chercher un billet </u><br/><br/>
 <form method="post" action="ChercheBilletExecuteServlet">
 
     Depart :
